@@ -1,0 +1,8 @@
+# chrome驱动的相对路径 具体见群中教程
+driverPath=./chromedriver-win64/chromedriver.exe
+# 用户名
+username=
+# 密码
+password=
+# 最大等待时间，没出问题就不用管他
+waitTime=6
