@@ -43,11 +43,14 @@ with open("./config.txt", "r", encoding='utf8') as file:
 
 # 填写chromedriver的目录
 # 'D:/Code/python/workspace/selenium/chromedriver-win64/chromedriver.exe'
-service = Service(driverPath)
+#service = Service(driverPath)
 # 不自动关闭浏览器
 option = webdriver.ChromeOptions()
+option.add_argument('--headless')
+option.add_argument('--disable-gpu')
 option.add_experimental_option("detach", True)
-driver = webdriver.Chrome(service=service,options=option)
+# driver = webdriver.Chrome(service=service/options=option)
+driver=webdriver.Remote(command_executor="http://192.168.2.23:4444/wd/hub",options=driver_options)
 
 
 driver.get('https://booking.lib.zju.edu.cn/h5/index.html#/SeatScreening/1')
