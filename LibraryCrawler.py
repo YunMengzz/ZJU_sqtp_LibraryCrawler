@@ -50,7 +50,8 @@ option.add_argument('--headless')
 option.add_argument('--disable-gpu')
 option.add_experimental_option("detach", True)
 # driver = webdriver.Chrome(service=service,options=option)
-driver=webdriver.Remote(command_executor="http://localhost:4444/wd/hub",options=option)
+driver = webdriver.Chrome(options=option)
+# driver=webdriver.Remote(command_executor="http://localhost:4444/wd/hub",options=option)
 
 
 driver.get('https://booking.lib.zju.edu.cn/h5/index.html#/SeatScreening/1')
