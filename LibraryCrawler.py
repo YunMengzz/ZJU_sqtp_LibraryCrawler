@@ -45,12 +45,25 @@ with open("./config.txt", "r", encoding='utf8') as file:
 # 'D:/Code/python/workspace/selenium/chromedriver-win64/chromedriver.exe'
 # service = Service("chromedriver")
 # 不自动关闭浏览器
-option = webdriver.ChromeOptions()
-option.add_argument('--headless')
-option.add_argument('--disable-gpu')
-option.add_experimental_option("detach", True)
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--headless') # 无头模式，可不启用界面显示运行
+chrome_options.add_argument('--disable-gpu') # 禁用GPU加速
+chrome_options.add_argument('--start-maximized')#浏览器最大化
+chrome_options.add_argument('--window-size=1280x1024') # 设置浏览器分辨率（窗口大小）
+chrome_options.add_argument('log-level=3')
+chrome_options.add_argument('--user-agent=""') # 设置请求头的User-Agent
+chrome_options.add_argument('--disable-infobars') # 禁用浏览器正在被自动化程序控制的提示
+chrome_options.add_argument('--incognito') # 隐身模式（无痕模式）
+chrome_options.add_argument('--hide-scrollbars') # 隐藏滚动条, 应对一些特殊页面
+chrome_options.add_argument('--disable-javascript') # 禁用javascript
+chrome_options.add_argument('--blink-settings=imagesEnabled=false') # 不加载图片, 提升速度
+chrome_options.add_argument('--ignore-certificate-errors') # 禁用扩展插件并实现窗口最大化
+chrome_options.add_argument('-disable-software-rasterizer')
+chrome_options.add_argument('--disable-extensions')
+chrome_options.add_argument('--no-sandbox')  #以最高权限运行
+chrome_options.add_argument('--disable-dev-shm-usage')
 # driver = webdriver.Chrome(service=service,options=option)
-driver = webdriver.Chrome(options=option)
+driver = webdriver.Chrome(options=chrome_options)
 # driver=webdriver.Remote(command_executor="http://localhost:4444/wd/hub",options=option)
 
 
@@ -100,3 +113,4 @@ saveFile.close()
 
 # close browser
 driver.quit()
+print("Crawler Successfully!")
